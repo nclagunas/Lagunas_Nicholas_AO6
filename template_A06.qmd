@@ -210,6 +210,13 @@ Hint: use `MARGIN = 1:2` to apply the function to each value instead of only a r
 
 ```{r}
 
+print(mat_rand)
+mat_rand = apply(mat_rand,1:2,signif,1)
+
+print(mat_rand)
+
+
+
 ```
 
 
