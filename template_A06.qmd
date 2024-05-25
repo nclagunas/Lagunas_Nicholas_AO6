@@ -241,6 +241,14 @@ Calculate the average temperature for each month across the whole data frame (us
 
 ```{r}
 
+means = c()
+for(i in 3:length(max_temps)){
+  
+  means = append(means,mean(max_temps[[i]]))
+}
+
+print(means)
+
 ```
 
 
@@ -255,6 +263,15 @@ Create three new data frames by slicing the data by state.
 No need to print any output here.
 
 ```{r}
+
+data_CO = max_temps[max_temps$state == "CO",]
+data_OH = max_temps[max_temps$state == "OH",]
+data_VA = max_temps[max_temps$state == "VA",]
+
+
+#print(data_CO)
+#print(data_OH)
+#print(data_VA)
 
 ```
 
@@ -276,6 +293,30 @@ Example (this is NOT the answer just an example of what goes in the {}):
 Note: This code should still run successfully even if the numbers were to change.
 
 ```{r}
+co_medians = c()
+
+print(data_CO)
+
+for(i in 3:length(data_CO)){
+  
+  
+  
+  co_medians = append(co_medians,median(data_CO[[i]]))
+}
+
+names_months = names(data_CO)[3:length(data_CO)]
+
+co_medians = set_names(co_medians,names_months)
+
+#print(co_medians)
+
+max_med = which.max(co_medians)
+min_med = which.min(co_medians)
+
+#paste0("The maximum median annual temperature of ",names(co_medians[max_med]))
+
+
+
 
 ```
 
