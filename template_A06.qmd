@@ -295,25 +295,27 @@ Note: This code should still run successfully even if the numbers were to change
 ```{r}
 co_medians = c()
 
-print(data_CO)
 
-for(i in 3:length(data_CO)){
+for(i in 1:length(data_CO[[1]])){
   
+  months = data_CO[i,3:14]
   
+  co_medians = append(co_medians,median(as.numeric(months)))
   
-  co_medians = append(co_medians,median(data_CO[[i]]))
 }
 
-names_months = names(data_CO)[3:length(data_CO)]
+names_years = data_CO[[2]]
 
-co_medians = set_names(co_medians,names_months)
+co_medians = set_names(co_medians,names_years)
 
-#print(co_medians)
 
-max_med = which.max(co_medians)
-min_med = which.min(co_medians)
+max_med = names(which.max(co_medians))
+min_med = names(which.min(co_medians))
 
-#paste0("The maximum median annual temperature of ",names(co_medians[max_med]))
+
+
+
+paste0("The maximum median annual temperature of ",co_medians[max_med], " occurred in ", max_med," and the minimum median annual temperature of ", co_medians[min_med], " occurred in ", min_med)
 
 
 
@@ -330,6 +332,38 @@ Example: The number 312 would return 6 (3 + 1 + 2)
 Run your function with 935068.
 
 ```{r}
+
+
+
+
+
+
+sum_of_digits = function(digit = NA){
+  
+  digit_str = as.character(digit)
+  
+  if(is.na(digit)){
+    
+    print(1)
+  
+    }
+  
+  first_digit = substr(digit_str,0,1)
+  
+  rest_of = substr(digit_str,2,nchar(digit_str))
+  
+  
+  return(as.numeric(rest_of))
+  #return(as.numeric(first_digit) + sum_of_digits(as.numeric(rest_of)))
+  
+  
+}
+
+#digit_str = toString()
+
+#print(is.na(digit_str))
+paste0(sum_of_digits(123))
+
 
 ```
 
